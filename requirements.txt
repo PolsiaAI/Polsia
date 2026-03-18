@@ -1,0 +1,38 @@
+# Web framework
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12
+
+# Database
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+alembic==1.14.0
+
+# Redis
+redis[hiredis]==5.2.1
+celery[redis]==5.4.0
+
+# Vector DB
+chromadb==0.5.23
+
+# Pydantic
+pydantic==2.10.3
+pydantic-settings==2.7.0
+
+# HTTP client
+httpx==0.28.1
+
+# Third-party integrations
+tweepy==4.14.0
+sendgrid==6.11.0
+stripe==11.3.0
+PyGithub==2.5.0
+google-ads==24.1.0
+facebook-business==21.0.0
+tavily-python==0.5.0
+
+# Utilities
+python-dotenv==1.0.1
+aiofiles==24.1.0
+tenacity==9.0.0
+structlog==24.4.0

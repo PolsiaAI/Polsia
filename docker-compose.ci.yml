@@ -1,0 +1,33 @@
+# CI override — mocks Claude CLI, no nginx, no host volume mounts
+version: "3.9"
+
+services:
+  backend:
+    environment:
+      CLAUDE_CLI_MOCK: "true"
+      SANDBOX_MODE: "true"
+    volumes:
+      - chroma_data:/app/data/chroma
+    # Remove ~/.claude mount — not available in CI
+
+  celery_worker:
+    environment:
+      CLAUDE_CLI_MOCK: "true"
+      SANDBOX_MODE: "true"
+    volumes:
+      - chroma_data:/app/data/chroma
+
+  celery_beat:
+    environment:
+      CLAUDE_CLI_MOCK: "true"
+      SANDBOX_MODE: "true"
+    volumes:
+      - celery_beat_data:/app/celerybeat
+
+  frontend:
+    environment:
+      NEXT_PUBLIC_API_URL: "http://backend:8000"
+      NEXT_PUBLIC_WS_URL: "ws://backend:8000"
+
+  nginx:
+    profiles: ["disabled"]  # Excluded in CI
